@@ -67,3 +67,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Pundit : manage user authorization and content for each page
 gem 'pundit'
+
+# BootStrap library
+gem 'bootstrap', '~> 5.1'
