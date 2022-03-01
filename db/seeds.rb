@@ -5,3 +5,40 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+puts "Creating 1 user and 3 tasks..."
+
+user = User.new(
+  username: "Bea",
+  first_name: "Béatrice",
+  last_name: "Rubio",
+  date_of_birth: "17/03/1993"
+)
+user.save!
+
+task = Task.new(
+  name: "Yoga",
+  description: "don't forget your mat!",
+  priority: 2,
+  start_at: Time.parse("#{Date.today} 16:00"),
+  duration: 45,
+  days: [2, 4]
+)
+task.user = user
+task.create!
+
+task = Task.new(
+  name: "Send email to Matthieu",
+  description: "matthieu@gmail.com",
+  priority: 1
+)
+task.user = user
+task.create!
+
+task = Task.new(
+  name: "Buy beers",
+  description: "",
+  priority: 3
+)
+task.user = user
+task.create!
