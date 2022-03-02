@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_02_093756) do
+ActiveRecord::Schema.define(version: 2022_03_02_104134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 2022_03_02_093756) do
     t.bigint "user_id", null: false
     t.string "name"
     t.text "details"
-    t.boolean "mark_as_done"
-    t.integer "priority"
+    t.boolean "mark_as_done", default: false
+    t.integer "priority", default: 3
     t.datetime "start_at"
     t.integer "duration"
     t.integer "days", array: true
