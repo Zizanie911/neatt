@@ -1,5 +1,4 @@
 class TasksController < ApplicationController
-
   def index
     @tasks = policy_scope(Task)
     @user = current_user
@@ -53,16 +52,12 @@ class TasksController < ApplicationController
     @tasks.count
   end
 
-  def nb_habits
-    nb = 0
-    @tasks.each do |task|
-      nb += 1 if task.days.nil?
-    end
-    return nb
+  def nb_tasks
+    regular_tasks.count
   end
 
-  def nb_tasks
-    return nb_total_tasks - nb_habits
+  def nb_habits
+    habits.count
   end
 
   def estimated_time
@@ -70,12 +65,15 @@ class TasksController < ApplicationController
     @tasks.each do |task|
       t += task.duration unless task.duration.nil?
     end
+    return "00:00" if t.zero?
+
     if t >= 60
       h = t.modulo(60)
       mn = t - (h * 60)
+      return "#{h}:00" if mn.zero?
+
       return "#{h}:#{mn}"
     end
     return "00:#{t}"
   end
-
 end
