@@ -1,8 +1,10 @@
-<h1 class="text-centrer"> Your day</h1>
-<ul>
-<div>
-<% @tasks.each do |task|%>
-<li><%= task.name %></li>
-<% end %>
+<div class="container">
+  <h1 class="text-centrer"> Your day</h1>
+  <ul>
+    <div>
+      <% @tasks.each do |task|%>
+      <li><%= task.name %></li>
+      <% end %>
+    </div>
+  </ul>
 </div>
-</ul>
