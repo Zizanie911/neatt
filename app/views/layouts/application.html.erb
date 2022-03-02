@@ -14,10 +14,14 @@
 
   <body class="<%= params[:controller]%>-<%= params[:action]%>">
     <% if  params[:action] != "home" %>
-      <%= render 'shared/navbar' %>
+      <%= render 'shared/navbartop' %>
       <%= render 'shared/flashes' %>
     <% end %>
 
     <%= yield %>
+
+    <% if  params[:action] != "home" %>
+      <%= render 'shared/navbar' %>
+    <% end %>
   </body>
 </html>
