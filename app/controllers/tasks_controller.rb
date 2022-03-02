@@ -11,7 +11,27 @@ class TasksController < ApplicationController
     @regular_tasks = regular_tasks
   end
 
+  def new
+    @task = Task.new
+    authorize @task
+  end
+
+  def create
+    @task = Task.new(task_params)
+    @task.user = current_user
+    authorize @task
+    if @task.save
+      redirect_to tasks_path
+    else
+      render :new
+    end
+  end
+
   private
+
+  def task_params
+    params.require(:task).permit(:name, :details, :priority, :start_at, :duration, days:[])
+  end
 
   def regular_tasks
     @tasks.where(days: nil)
@@ -57,5 +77,4 @@ class TasksController < ApplicationController
     @task.save
     redirect_to tasks_path
   end
-
 end
