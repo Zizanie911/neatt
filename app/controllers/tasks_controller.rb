@@ -65,9 +65,13 @@ class TasksController < ApplicationController
     @tasks.each do |task|
       t += task.duration unless task.duration.nil?
     end
+    return "00:00" if t.zero?
+
     if t >= 60
       h = t.modulo(60)
       mn = t - (h * 60)
+      return "#{h}:00" if mn.zero?
+
       return "#{h}:#{mn}"
     end
     return "00:#{t}"
