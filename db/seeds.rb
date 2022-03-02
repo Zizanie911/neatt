@@ -20,7 +20,7 @@ user.save!
 task = Task.new(
   name: "Yoga",
   details: "don't forget your mat!",
-  priority: 2,
+  priority: false,
   start_at: Time.parse("#{Date.today} 16:00"),
   duration: 45,
   days: [2, 4]
@@ -31,7 +31,7 @@ task.save!
 task = Task.new(
   name: "Send email to Matthieu",
   details: "matthieu@gmail.com",
-  priority: 1
+  priority: true
 )
 task.user = user
 task.save!
@@ -39,7 +39,7 @@ task.save!
 task = Task.new(
   name: "Buy beers",
   details: "",
-  priority: 3
+  priority: false
 )
 task.user = user
 task.save!
