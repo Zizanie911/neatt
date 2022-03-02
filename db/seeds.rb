@@ -11,7 +11,7 @@ puts "Creating 1 user and 3 tasks..."
 user = User.new(
   email: "beatrice@gmail.com",
   password: "secret",
-  username: "Bea",
+  username: "Bea"
 )
 user.save!
 
