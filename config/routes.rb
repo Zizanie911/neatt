@@ -6,5 +6,9 @@ Rails.application.routes.draw do
       patch :mark_as_done
     end
   end
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get "profile", to: 'dashboard#profile', as: :profile
 end
+
+
+
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
