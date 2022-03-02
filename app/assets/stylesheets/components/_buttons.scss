@@ -14,8 +14,11 @@
 
 .add-button {
   border-radius: 50%;
-  height: 100px;
-  width: 100px;
-  background-color: #ffe581;
-  background-image: url("../../images/icons/plus.png");
+  height: 60px;
+  width: 60px;
+  background-color: #358aa7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
 }
