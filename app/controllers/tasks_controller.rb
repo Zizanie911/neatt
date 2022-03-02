@@ -7,9 +7,19 @@ class TasksController < ApplicationController
     @total = nb_total_tasks
     @nb_habits = nb_habits
     @nb_tasks = nb_tasks
+    @estimated_time = estimated_time
+    @regular_tasks = regular_tasks
   end
 
   private
+
+  def regular_tasks
+    @tasks.where(days: nil)
+  end
+
+  def habits
+    @tasks.where.not(days: nil)
+  end
 
   def nb_total_tasks
     @tasks.count
@@ -25,5 +35,18 @@ class TasksController < ApplicationController
 
   def nb_tasks
     return nb_total_tasks - nb_habits
+  end
+
+  def estimated_time
+    t = 0
+    @tasks.each do |task|
+      t += task.duration unless task.duration.nil?
+    end
+    if t >= 60
+      h = t.modulo(60)
+      mn = t - (h * 60)
+      return "#{h}:#{mn}"
+    end
+    return "00:#{t}"
   end
 end

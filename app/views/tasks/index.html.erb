@@ -1,9 +1,20 @@
-<h1 class="text-centrer"> Your day</h1>
 <%= render "hey" %>
+<%= render "estimated_time" %>
+
+<h3>TOP PRIORITY</h3>
 <ul>
-<div>
-<% @tasks.each do |task|%>
-<li><%= task.name %></li>
-<% end %>
-</div>
+  <div>
+    <% @tasks.where(priority: 1).each do |task|%>
+      <li><%= task.name %></li>
+    <% end %>
+  </div>
+</ul>
+
+<h3>TASKS</h3>
+<ul>
+  <div>
+    <% @tasks.where(priority: [2,3]).each do |task|%>
+      <li><%= task.name %></li>
+    <% end %>
+  </div>
 </ul>
